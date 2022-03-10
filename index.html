@@ -1,0 +1,55 @@
+<!--created by prashant shukla-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ping Pong</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+     
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>   
+
+    </head>
+    <body background="background1.jpg">
+        <center>
+            <div class="heading btn btn-primary">
+                AI Ping Pong
+                <button class="modalsender btn btn-success" data-toggle="modal" data-target="#Instructions">
+                    Instructions
+                </button>
+            </div><br><br>
+            <button class="btn btn-success" id="playthegame" onclick="start()">Play</button><br><br>
+            
+            <button class="btn btn-info"><span id="whatisthegamestatus"></span></button><br><br>
+            <div id="game"></div><br><br>
+            <button class="btn btn-danger" id="restartthegame" onclick="restart()">Restart</button><br><br>
+            <div style="bottom :0px; line-height: 3; width: 100%; position: relative; background-color: darkgrey; color: white;">
+                Developed by: Priyansh
+            </div>
+            
+        </center>
+        <div id="Instructions" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Instructions</h3>&nbsp;&nbsp;<button class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <ol style="font-size: 25;">
+                            <li>Keep your Laptop screen straight</li>
+                            <li>Position yourself approximately 3 to 4 feet away from the laptop.</li>
+                            <li>Move your right wrist up and down. There should be a red dot on its location.</li>
+                            <li>Now press the play button and Position yourself 3 to 4 feet away from the laptop again.</li>
+                            <li>You control the red paddle. It will move as per the dot on your wrist.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
