@@ -1,5 +1,8 @@
 
 /*created by prashant shukla */
+rwX = "";
+rwY = "";
+rwS = "";
 
 var paddle2 =10,paddle1=10;
 
@@ -24,13 +27,24 @@ var ball = {
 function setup(){
   var canvas =  createCanvas(700,600);
   canvas.parent("#game");
+  video = createCapture(VIDEO);
+  video.size(700, 600);
+  video.hide();
+  posenet = ml5.poseNet(video, ModelLoaded);
+  posenet.on('pose', gotPoses);
 }
 
+function gotPoses(results) {
+  rwX = results[0].pose.rightWrist.x;
+  rwY = results[0].pose.rightWrist.y;
+  rwS = results[0].pose.keypoints[10].score;
+  console.log("rwX = " + rwX + ", rwY = " + rwY + ", rwS = " + rwS);
+}
 
 function draw(){
 
  background(0); 
-
+ image(video, 0, 0, 700, 600);
  fill("black");
  stroke("black");
  rect(680,0,20,700);
@@ -39,6 +53,12 @@ function draw(){
  stroke("black");
  rect(0,0,20,700);
  
+  if (rwS > 0.2) {
+      stroke("#0000FF");
+      fill("#FF0000");
+      circle(rwX, rwY, 20);
+  }
+
    //funtion paddleInCanvas call 
    paddleInCanvas();
  
@@ -68,7 +88,9 @@ function draw(){
     move();
 }
 
-
+function ModelLoaded() {
+  console.log("The model has been loaded! Now the Ping Pong game can start!");
+} 
 
 //function reset when ball does notcame in the contact of padde
 function reset(){
